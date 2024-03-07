@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1079143255073",
+    "project_id": "htg-smart-watch",
+    "storage_bucket": "htg-smart-watch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079143255073:android:205372c24ac934df51e760",
+        "android_client_info": {
+          "package_name": "com.example.htg_smart_watch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_yYOyyYXGVSkY5YI2UeASW7M4IK57MBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
