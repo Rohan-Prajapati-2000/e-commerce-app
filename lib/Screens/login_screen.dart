@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:htg_smart_watch/Screens/create_new_account.dart';
 import 'package:htg_smart_watch/Utils/utils.dart';
 import 'package:htg_smart_watch/main.dart';
+import 'package:htg_smart_watch/models/shop.dart';
+import 'package:provider/provider.dart';
 
 class Login_Screen extends StatefulWidget{
   @override
@@ -22,6 +24,7 @@ class _Login_ScreenState extends State<Login_Screen> {
         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: emailController.text.trim(), password: passwordController.text.trim());
         if (userCredential.user != null){
+          //After login Navigating to Home Screen
           Navigator.popUntil(context, (route) => route.isFirst);
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyHomePage()));
         }

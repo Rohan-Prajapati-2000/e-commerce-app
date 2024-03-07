@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:htg_smart_watch/Screens/Profile%20Screen/empty_user.dart';
 import 'package:htg_smart_watch/Screens/Profile%20Screen/user_not_empty.dart';
 import 'package:htg_smart_watch/Screens/Profile%20Screen/user_profile_details.dart';
+import 'package:htg_smart_watch/Screens/login_screen.dart';
+import 'package:htg_smart_watch/main.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -28,6 +30,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text("Your Profile"),
         elevation: 2,
         backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(onPressed: () async{
+            await FirebaseAuth.instance.signOut();
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login_Screen()));
+          },
+              icon: Icon(Icons.logout))
+        ],
       ),
       body: (FirebaseAuth.instance.currentUser != null) ? UserProfileDetails(user: _user!): EmptyUser()
     );
