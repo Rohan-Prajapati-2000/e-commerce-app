@@ -92,8 +92,23 @@ class _CartContentState extends State<CartContent> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(item.name),
-                                  Text(item.description),
+                                  Text(item.name,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20)),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Container(
+                                      height: 60,
+                                      child: ListView(
+                                        children: [
+                                          Text(item.description,
+                                              textAlign: TextAlign.justify
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             )
@@ -152,7 +167,7 @@ class _CartContentState extends State<CartContent> {
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
-                                    CupertinoColors.systemYellow,
+                                        CupertinoColors.systemYellow,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),
@@ -169,7 +184,7 @@ class _CartContentState extends State<CartContent> {
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
-                                    CupertinoColors.systemYellow,
+                                        CupertinoColors.systemYellow,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
                                     ),

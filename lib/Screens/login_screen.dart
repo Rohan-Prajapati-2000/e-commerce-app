@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:htg_smart_watch/Screens/create_new_account.dart';
 import 'package:htg_smart_watch/Utils/utils.dart';
 import 'package:htg_smart_watch/main.dart';
-import 'package:htg_smart_watch/models/shop.dart';
-import 'package:provider/provider.dart';
 
 class Login_Screen extends StatefulWidget{
   @override

@@ -15,9 +15,6 @@ class HomeProductTile extends StatefulWidget {
 class _HomeProductTileState extends State<HomeProductTile> {
   double containerHeight = 520;
   bool isDescriptionOn = false;
-  Icon upArrowIcon = const Icon(Icons.keyboard_arrow_up_outlined);
-  Icon downArrowIcon = const Icon(Icons.keyboard_arrow_down_outlined);
-
 
   void addToCart(BuildContext context){
     showDialog(context: context,
@@ -61,7 +58,7 @@ class _HomeProductTileState extends State<HomeProductTile> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
-                  Image.asset("assets/images/watch.jpg", height: 250, width: 250),
+                  Image.network(widget.product.image, height: 250, width: 250),
                   Row(
                     children: [
                       Expanded(
@@ -83,8 +80,8 @@ class _HomeProductTileState extends State<HomeProductTile> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("MRP: ₹"),
-                              Text(widget.product.price.toString()),
+                              Text("MRP: ₹ ${widget.product.mrp}"),
+                              Text("Price: ₹ ${widget.product.price.toString()}"),
                             ],
                           ),
                         ),
@@ -124,7 +121,9 @@ class _HomeProductTileState extends State<HomeProductTile> {
                       const Text("Description:- ",
                           style: TextStyle(fontWeight: FontWeight.bold)),
                       IconButton(
-                          icon: isDescriptionOn ? upArrowIcon : downArrowIcon,
+                          icon: isDescriptionOn
+                              ? Icon(Icons.keyboard_arrow_up_outlined)
+                              : Icon(Icons.keyboard_arrow_down_outlined),
                           onPressed: () {
                             setState(() {
                               isDescriptionOn = !isDescriptionOn;
@@ -136,7 +135,15 @@ class _HomeProductTileState extends State<HomeProductTile> {
                     ],
                   ),
                   SizedBox(height: 5),
-                  Text(widget.product.description),
+                  // Text(widget.product.description),
+                 if (isDescriptionOn)
+                   Text(widget.product.description)// Show full description
+                 else
+                   Text(
+                     widget.product.description,
+                     maxLines: 2,
+                     overflow: TextOverflow.ellipsis,
+                   )
                 ],
               ),
             ),
@@ -148,3 +155,4 @@ class _HomeProductTileState extends State<HomeProductTile> {
 
   }
 }
+

@@ -1,8 +1,5 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:htg_smart_watch/cart_screen/cart_screen.dart';
 import 'package:htg_smart_watch/models/home_product_tile.dart';
-import 'package:htg_smart_watch/models/product_tile.dart';
 import 'package:htg_smart_watch/models/products.dart';
 import 'package:htg_smart_watch/models/shop.dart';
 import 'package:provider/provider.dart';

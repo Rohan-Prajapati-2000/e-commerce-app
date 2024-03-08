@@ -1,25 +1,28 @@
 class Product{
   final String name;
   final String description;
-  // final String imagePath;
-  final double price;
+  final String image;
+  final int price;
   int quantity;
+  int mrp;
 
   Product({
     required this.name,
     required this.description,
-    // required this.imagePath,
+    required this.image,
     required this.price,
-    this.quantity=1
+    this.quantity=1,
+    this.mrp=0
   });
 
   // Convert a Product instance to a Map
   Map<String, dynamic> toJson() => {
     'name' : name,
     'description' : description,
-    // 'imagePath' : imagePath,
+    'image' : image,
     'price' : price,
     'quantity' : quantity,
+    'mrp' : mrp
   };
 
   // Create a product instance from a Map
@@ -27,9 +30,10 @@ class Product{
     return Product(
       name: map['name'],
       description : map['description'],
-      // imagePath: map['imagePath']
+      image: map['image'],
       price: map['price'],
-      quantity: map['quantity']?? 1
+      quantity: map['quantity']?? 1,
+      mrp: map['mrp']
     );
   }
 

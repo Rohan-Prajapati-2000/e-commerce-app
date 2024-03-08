@@ -1,21 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:htg_smart_watch/Utils/utils.dart';
 import 'package:htg_smart_watch/models/products.dart';
 
 class Shop extends ChangeNotifier {
   // Product for sale
-  final List<Product> _shop = [
-    Product(name: "Product 1", description: "Item Description", price: 199),
-    Product(name: "Product 2", description: "Item Description", price: 299),
-    Product(name: "Product 3", description: "Item Description", price: 399),
-    Product(name: "Product 4", description: "Item Description", price: 499),
-    Product(name: "Product 5", description: "Item Description", price: 599),
-    Product(name: "Product 6", description: "Item Description", price: 699),
-    Product(name: "Product 7", description: "Item Description", price: 799),
-    Product(name: "Product 8", description: "Item Description", price: 899),
-    Product(name: "Product 9", description: "Item Description", price: 999),
-  ];
+  List<Product> _shop = [];
 
   // User Cart
   List<Product> _cart = [];
@@ -26,9 +17,38 @@ class Shop extends ChangeNotifier {
   // Get User Cart
   List<Product> get cart => _cart;
 
-  // Firestore collection reference
+  // Firestore collection reference for user
   final CollectionReference _userCollection =
       FirebaseFirestore.instance.collection('users');
+
+  // Firestore collection reference for product
+  final CollectionReference _productsCollection =
+      FirebaseFirestore.instance.collection('productsDetail');
+
+//Constructor
+  Shop(){
+    loadProductFromFirestore();
+  }
+
+  // Fetch and load product from Firestore
+  Future<void> loadProductFromFirestore() async{
+    try{
+      QuerySnapshot querySnapshot = await _productsCollection.get();
+      _shop = querySnapshot.docs.map((doc){
+        var data = doc.data() as Map<String, dynamic>;
+        return Product(
+            name: data['name'],
+            description: data['description'],
+            image: data['image'],
+            price: data['price'],
+            mrp: data['mrp']);
+      }).toList();
+      notifyListeners();
+    } catch (e){
+      Utils().toastMessage(e.toString());
+    }
+  }
+
 
   // Add item to cart
   void addToCart(Product product) {
