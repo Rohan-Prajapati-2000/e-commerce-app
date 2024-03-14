@@ -39,7 +39,7 @@ class Shop extends ChangeNotifier {
         return Product(
             name: data['name'],
             description: data['description'],
-            image: data['image'],
+            images: data['images'],
             price: data['price'],
             mrp: data['mrp']);
       }).toList();
@@ -76,7 +76,7 @@ class Shop extends ChangeNotifier {
     notifyListeners();
   }
 
-  //Convart cart to list of map for Firestore
+  // Convert cart to list of map for Firestore
   List<Map<String, dynamic>> cartToMap() {
     return _cart.map((product) => product.toJson()).toList();
   }

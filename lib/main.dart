@@ -9,6 +9,7 @@ import 'package:htg_smart_watch/Service/auth_service.dart';
 import 'package:htg_smart_watch/cart_screen/cart_screen.dart';
 import 'package:htg_smart_watch/firebase_options.dart';
 import 'package:htg_smart_watch/models/shop.dart';
+import 'package:htg_smart_watch/product_image_array.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
               return user != null ? MyHomePage() : Login_Screen();
             },
           ),
+          // home: ImageListViewArray(),
         ));
   }
 }
