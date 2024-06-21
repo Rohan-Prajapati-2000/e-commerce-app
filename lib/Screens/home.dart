@@ -10,7 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  double containerHeight = 480;
+  double containerHeight = 0;
   bool isDescriptionOn = false;
   Icon upArrowIcon = const Icon(Icons.keyboard_arrow_up_outlined);
   Icon downArrowIcon = const Icon(Icons.keyboard_arrow_down_outlined);
@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     products = context.watch<Shop>().shop;
+    containerHeight = MediaQuery.of(context).size.height-15;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -72,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 10),
               Container(
-                height: 580,
+                height: containerHeight,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: ListView.builder(

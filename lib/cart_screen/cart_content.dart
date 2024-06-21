@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:htg_smart_watch/models/products.dart';
 import 'package:htg_smart_watch/models/shop.dart';
+import 'package:htg_smart_watch/product_image_array.dart';
 import 'package:provider/provider.dart';
 
 class CartContent extends StatefulWidget {
@@ -78,11 +79,15 @@ class _CartContentState extends State<CartContent> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset(
-                                    "assets/images/watch.jpg",
-                                    height: 90,
-                                    width: 90,
-                                  )
+                                  Container(
+                                    color: Colors.blue,
+                                    height: 120,
+                                    width: 100,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: ImageListViewArray(),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

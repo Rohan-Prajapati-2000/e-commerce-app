@@ -30,7 +30,7 @@ class Product{
     return Product(
       name: json['name'],
       description: json['description'],
-      images: (json['images'] as List).map((e) => e.toString()).toList(), // Fixed here
+      images: (json['images'] as List).map((e) => e.toString()).toList(),
       price: json['price'],
       quantity: json['quantity'] ?? 1, // Providing a default value if it's null
       mrp: json['mrp'],
